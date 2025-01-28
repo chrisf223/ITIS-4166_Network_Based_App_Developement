@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Threads</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="logo"/>
+            </a> 
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search items...">
+        </div>
+        <div class="nav-bar">
+            <a href="items.html">Browse</a>
+            <a href="new.html">Sell</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Login</a>
+        </div>
+    </header>
+    <main>
+        <h1>List a New Item</h1>
+        <form action="#" method="POST" enctype="multipart/form-data" class="new-item-form">
+            <div class="form-group">
+                <label for="condition">Condition:</label>
+                <select id="condition" name="condition" required>
+                    <option value="" disabled selected>Select Condition</option>
+                    <option value="new">New</option>
+                    <option value="like-new">Like New</option>
+                    <option value="used">Good</option>
+                    <option value="worn">Used</option>
+                    <option value="damaged">Damaged</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="title">Item Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="size">Size:</label>
+                <input type="text" id="size" name="size" required>
+            </div>
+            <div class="form-group">
+                <label for="seller">Seller Name:</label>
+                <input type="text" id="seller" name="seller" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price ($USD):</label>
+                <input type="number" id="price" name="price" min="1" step="any" required>
+            </div>
+            <div class="form-group">
+                <label for="details">Details:</label>
+                <textarea id="details" name="details" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Submit Item</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="social-media-icons">
+                <a href="#" class="social-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 Retro Threads. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
