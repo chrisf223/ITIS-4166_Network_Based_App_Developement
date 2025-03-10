@@ -1,0 +1,11 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+       <h4><%= story.title%></h4>
+       <small>Posted <%= story.createdAt%> by <%= story.author%></small>
+       <div id = "story"><%= story.content%></div>
+       <form>
+          <button type = "submit" formmethod = "GET" formaction = "/stories/<%= story._id%>/edit">Edit</button>
+          <button type = "submit" formmethod = "POST" formaction = "/stories/<%= story._id%>?_method=DELETE">Delete</button>
+       </form>
+    </div>
+    <%- include('../partials/footer.ejs')%>
