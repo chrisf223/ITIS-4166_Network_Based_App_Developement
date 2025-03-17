@@ -8,8 +8,14 @@ exports.index = ('/', (req, res)=> {
     console.log(searchTerm);
     
     if (searchTerm) {
-        items = items.filter(item => item.active && item.title.toLowerCase().includes(searchTerm.toLowerCase()));
+        items = items.filter(item => 
+            item.active && (
+                item.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                item.details.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+        );
     }
+    
 
     items.sort((a, b) => parseFloat(a.price.replace('$', '')) - parseFloat(b.price.replace('$', '')));
 
