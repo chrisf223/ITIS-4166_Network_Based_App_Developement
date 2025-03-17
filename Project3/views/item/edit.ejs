@@ -1,0 +1,45 @@
+<%- include('../partials/header.ejs')%> 
+<main>
+    <h1>List a New Item</h1>
+    <form action="/items/<%= item.id%>?_method=PUT" method="POST" enctype="multipart/form-data" class="new-item-form">
+        <div class="form-group">
+            <label for="condition">Condition:</label>
+            <select id="condition" name="condition" required>
+                <option value="" disabled>Select Condition</option>
+                <option value="New" <%= item.condition === 'New' ? 'selected' : '' %>>New</option>
+                <option value="Like New" <%= item.condition === 'Like New' ? 'selected' : '' %>>Like New</option>
+                <option value="Good" <%= item.condition === 'Good' ? 'selected' : '' %>>Good</option>
+                <option value="Worn" <%= item.condition === 'Worn' ? 'selected' : '' %>>Worn</option>
+                <option value="Damaged" <%= item.condition === 'Damaged' ? 'selected' : '' %>>Damaged</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="title">Item Title:</label>
+            <input type="text" id="title" name="title" required value = "<%= item.title%>">
+        </div>
+        <div class="form-group">
+            <label for="size">Size:</label>
+            <input type="text" id="size" name="size" required value = "<%= item.size%>">
+        </div>
+        <div class="form-group">
+            <label for="seller">Seller Name:</label>
+            <input type="text" id="seller" name="seller" required value = "<%= item.seller%>">
+        </div>
+        <div class="form-group">
+            <label for="price">Price ($USD):</label>
+            <input type="number" id="price" name="price" min="1" step="any" required value = "<%= parseFloat(item.price.replace('$', '')) %>">
+        </div>
+        <div class="form-group">
+            <label for="details">Details:</label>
+            <textarea id="details" name="details" rows="4" required><%= item.details%></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required >
+        </div>
+        <div class="form-group">
+            <button type="submit" class="submit-btn">Submit Item</button>
+        </div>
+    </form>
+</main>
+<%- include('../partials/footer.ejs')%> 
