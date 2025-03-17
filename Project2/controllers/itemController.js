@@ -11,6 +11,8 @@ exports.index = ('/', (req, res)=> {
         items = items.filter(item => item.active && item.title.toLowerCase().includes(searchTerm.toLowerCase()));
     }
 
+    items.sort((a, b) => parseFloat(a.price.replace('$', '')) - parseFloat(b.price.replace('$', '')));
+
     res.render('./item/index', {items});
 });
 
@@ -43,10 +45,11 @@ exports.edit = ('/:id/edit', (req, res)=> {
     let item = model.findById(id);
     if (item) {
         res.render('./item/edit', {item});
-
     }
     else {
-        res.status(404).send('Cannot find item with id ' + id);
+        let err = new Error('Cannot find a item with id ' + id);
+        err.status = 404;
+        next(err);
     }
 });
 
@@ -58,7 +61,9 @@ exports.update = ('/:id', upload, (req, res)=> {
         res.redirect('/items/'+id);
     }
     else {
-        res.status(404).send('Cannot find item with id ' + id);
+        let err = new Error('Cannot find a item with id ' + id);
+        err.status = 404;
+        next(err);
     }
 });
 
@@ -68,7 +73,9 @@ exports.delete = ('/:id', (req, res)=> {
         res.redirect('/items/');
     }
     else {
-        res.status(404).send('Cannot find item with id ' + id);
+        let err = new Error('Cannot find a item with id ' + id);
+        err.status = 404;
+        next(err);
     }
 });
 
