@@ -41,7 +41,7 @@ exports.new = (req, res)=>{
 exports.create = (req, res, next) => {
     let itemData = req.body;
     let file = req.file;
-    itemData.image = file.filename;
+    if (file) itemData.image = file.filename;
     itemData.active = true;
     itemData.offers = Math.floor(Math.random() * 6);
     let item = new model(itemData);
@@ -98,19 +98,22 @@ exports.edit = (req, res, next)=> {
     .catch(err=>next(err));
 };
 
-exports.update = ('/:id', upload, (req, res)=> {
-    let item = req.body;
+exports.update = (req, res, next)=> {
     let id = req.params.id;
-    let file = req.file;
-    item.image = file.filename;
 
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
         let err = new Error('Invalid item id');
         err.status = 400;
         return next(err);
     }
+
+    let item = req.body;
+    let file = req.file;
+    if (file) item.image = file.filename;
+
     
-    model.findByIdAndUpdate(id, item, {useAndModify: false, runValidators: true})
+    
+    model.findByIdAndUpdate(id, item, { new: true, runValidators: true })
     .then(item=>{
         if (item) {
             res.redirect('/items/'+id);
@@ -127,9 +130,9 @@ exports.update = ('/:id', upload, (req, res)=> {
         }
         next(err);
     });
-});
+};
 
-exports.delete = ('/:id', (req, res)=> {
+exports.delete = (req, res, next)=> {
     let id = req.params.id;
 
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
@@ -151,6 +154,6 @@ exports.delete = ('/:id', (req, res)=> {
          
     })
     .catch(err=>next(err));
-});
+};
 
 

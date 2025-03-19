@@ -30,6 +30,7 @@ const itemSchema = new Schema(
     details: {
       type: String,
       required: [true, 'Details are required'],
+      maxlength: [100, 'content should have 100 characters or less']
     },
     image: {
       type: String,
