@@ -1,0 +1,21 @@
+{
+  "name": "exercise7",
+  "version": "1.0.0",
+  "description": "Integrate users",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lijuan Cao",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.7.0",
+    "morgan": "^1.10.0"
+  }
+}

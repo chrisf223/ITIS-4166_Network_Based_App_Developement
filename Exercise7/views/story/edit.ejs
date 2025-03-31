@@ -1,0 +1,15 @@
+<%- include('../partials/header.ejs')%>
+    
+    <form method = "POST" action = "/stories/<%= story.id%>?_method=PUT" class="new-form">
+        <label for="title" >Title</label>
+        <input type="text" id="title" name="title" value = "<%= story.title%>">
+        
+        <label for="content">Content</label>
+        <textarea rows="5" id="content" name="content" class = "fixed-width"><%= story.content%></textarea>
+        
+        <input type="submit" value="Submit">   
+      
+    </form>
+
+    </div>
+    <%- include('../partials/footer.ejs')%>
