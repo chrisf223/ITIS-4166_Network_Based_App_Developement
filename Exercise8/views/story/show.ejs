@@ -1,0 +1,12 @@
+<%- include('../partials/header.ejs')%>
+       <h4><%= story.title%></h4>
+       <small>Posted <%= story.createdAt%> by <%= story.author.firstName + ' ' + story.author.lastName%></small>
+       <div id = "story"><%= story.content%></div>
+       <%if (user == story.author._id) {%>
+         <form>
+            <button type = "submit" formmethod = "GET" formaction = "/stories/<%= story.id%>/edit">Edit</button>
+            <button type = "submit" formmethod = "POST" formaction = "/stories/<%= story.id%>?_method=DELETE">Delete</button>
+         </form>
+      <%}%> 
+    </div>
+    <%- include('../partials/footer.ejs')%>
