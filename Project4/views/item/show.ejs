@@ -1,0 +1,23 @@
+<%- include('../partials/header.ejs')%> 
+    <h1>Item Details</h1>
+    
+    <section class="item-detail-container">
+        <!-- Left Column: Image -->
+        <div class="item-image">
+            <img src="/images/<%= item.image %>" alt="Vintage Jeans">
+        </div>
+        
+        <!-- Right Column: Item Details -->
+        <div class="item-info">
+            <h2><%= item.title %></h2>
+            <p><strong>Condition:</strong> <%= item.condition %></p>
+            <p><strong>Size:</strong> <%= item.size %></p>
+            <p><strong>Offers Received:</strong> <%= item.offers %></p>
+            <p><strong>Seller:</strong> <%= item.seller.firstName + ' ' + item.seller.lastName %></p>
+            <p><strong>Price:</strong> $<%= item.price %></p>
+            <p><%= item.details %></p>
+
+        </div>
+    </section>
+</main>
+<%- include('../partials/footer.ejs')%> 

@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+<div class="profile-container">
+  <h1>Your Listings</h1>
+
+  <% if (items.length === 0) { %>
+    <p>You do not have any listings.</a></p>
+  <% } else { %>
+    <table class="item-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% items.forEach(item => { %>
+          <tr>
+            <td><a href="/items/<%= item._id %>"><%= item.title %></a></td>
+            <td><%= item.active ? "Active" : "Inactive" %></td>
+            <td>
+              <form style="display: inline;">
+                <button type="submit" formmethod="GET" formaction="/items/<%= item._id %>/edit" class="btn edit-btn">
+                  <i class="fa-solid fa-pen-to-square"></i> Edit
+                </button>
+              </form>
+              <form style="display: inline;">
+                <button type="submit" formmethod="POST" formaction="/items/<%= item._id %>?_method=DELETE" class="btn delete-btn">
+                  <i class="fa-solid fa-trash"></i> Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</div>
+</main>
+
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs')%> 
+    <h1>Browse Our Collection</h1>
+    <section class="items-grid">
+        <%if(items.length) {%>
+            <%items.forEach(item=>{%>
+                <%if(item.active) {%>
+                    <a href="/items/<%= item.id%>" class="items-card">
+                        <img src="/images/<%= item.image%>">
+                        <div class="items-info">
+                            <h2><%= item.title %></h2>
+                            <p>Condition: <%= item.condition %></p>
+                            <p>Size: <%= item.size %></p>
+                            <p class="price">$<%= item.price %></p>
+                            <p>Offers: <%= item.offers %></p>
+                        </div>
+                    </a>
+                <%}%>
+            <% });
+            } else if (!foundItems) {%>
+                <p>No items can be found</p>
+            <%} else {%>
+                <p>There are no items to display</p>
+            <%}%>        
+    </section>
+</main>
+
+<%- include('../partials/footer.ejs')%> 
