@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Jibber Jabber</title>
+</head>
+<body>
+    <nav>
+        <h2>Jibber Jabber</h2>
+            <div class="nav-wrapper">
+                <a href='/'>Home</a>
+                <a href='/stories'>Stories</a>
+                <a href='/stories/new'>Create a New Story</a>
+                <%if(!user) {%>
+                    <a href='/users/new'>Sign Up</a>
+                    <a href='/users/login'>Login</a>
+                <%} else {%>
+                    <a href='/users/profile'>Profile</a>
+                    <a href='/users/logout'>Logout</a>
+                <%}%>    
+            </div>
+    </nav>
+    <div class = "content">
+
+
+    <% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+            <%});%>
+                <%}%>
+    
+                    <% if(successMessages.length > 0) {%>
+    
+                        <% successMessages.forEach(message=>{%>
+                            <div class='success'>
+                                <%=message%>
+                            </div>
+                            <%});%>
+                                <%}%>
