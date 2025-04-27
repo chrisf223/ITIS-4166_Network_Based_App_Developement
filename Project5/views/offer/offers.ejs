@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+
+<div class="profile-container">
+  <h1>Offers for: <%= item.title %></h1>
+
+  <% if (offers.length === 0) { %>
+    <p>No offers have been made on this item yet.</p>
+  <% } else { %>
+    <table class="item-table">
+      <thead>
+        <tr>
+          <th>Buyer</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Date</th>
+          <% if (item.active) { %><th>Action</th><% } %>
+        </tr>
+      </thead>
+      <tbody>
+        <% offers.forEach(offer => { %>
+          <tr>
+            <td><%= offer.buyer.firstName + " " + offer.buyer.lastName %></td>
+            <td>$<%= offer.amount.toFixed(2) %></td>
+            <td><%= offer.status %></td>
+            <td><%= offer.createdAt.toDateString() %></td>
+            <% if (item.active && offer.status === 'pending') { %>
+              <td>
+                <form method="POST" action="/items/<%= item._id %>/offers/<%= offer._id %>/accept?_method=PUT">
+                  <button class="btn edit-btn" type="submit">Accept</button>
+                </form>
+              </td>
+            <% } else if (item.active) { %>
+              <td><em>N/A</em></td>
+            <% } %>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</div>
+
+</main>
+<%- include('../partials/footer') %>
+

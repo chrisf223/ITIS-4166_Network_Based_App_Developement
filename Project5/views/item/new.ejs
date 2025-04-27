@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs')%> 
+    <h1>List a New Item</h1>
+    <form action="/items" method="POST" enctype="multipart/form-data" class="new-item-form">
+        <div class="form-group">
+            <label for="condition">Condition:</label>
+            <select id="condition" name="condition" required>
+                <option value="" disabled selected>Select Condition</option>
+                <option value="New">New</option>
+                <option value="Like New">Like New</option>
+                <option value="Good">Good</option>
+                <option value="Worn">Worn</option>
+                <option value="Damaged">Damaged</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="title">Item Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="size">Size:</label>
+            <input type="text" id="size" name="size" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Price ($USD):</label>
+            <input type="number" id="price" name="price" min="1" step="any" required>
+        </div>
+        <div class="form-group">
+            <label for="details">Details:</label>
+            <textarea id="details" name="details" rows="4" maxlength="100" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="submit-btn">Submit Item</button>
+        </div>
+    </form>
+</main>
+<%- include('../partials/footer.ejs')%> 

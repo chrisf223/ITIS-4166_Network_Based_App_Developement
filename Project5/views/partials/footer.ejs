@@ -1,0 +1,44 @@
+<footer>
+    <div class="footer-content">
+        <div class="social-media-icons">
+            <a href="#" class="social-icon">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 Retro Threads. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Auto-dismiss flash messages after 4 seconds
+    const flashMessages = document.querySelectorAll('.flash-message');
+
+    flashMessages.forEach(el => {
+        let timer = setTimeout(() => {
+            el.style.transition = 'opacity 0.5s ease';
+            el.style.opacity = '0';
+            setTimeout(() => el.remove(), 500);
+        }, 4000);
+
+        el.addEventListener('mouseenter', () => clearTimeout(timer));
+        el.addEventListener('mouseleave', () => {
+            timer = setTimeout(() => {
+                el.style.opacity = '0';
+                setTimeout(() => el.remove(), 500);
+            }, 2000);
+        });
+    });
+
+</script>
+
+</body>
+</html>

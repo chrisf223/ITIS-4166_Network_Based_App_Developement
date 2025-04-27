@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs')%> 
+  <h1>Please Sign Up</h1>
+  
+  <form action="/users" method="POST" class="new-item-form">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required minlength="8" maxlength="64">
+    </div>
+
+    <div class="form-group">
+      <label></label>
+      <button type="submit" class="submit-btn">Create Account</button>
+    </div>
+  </form>
+</main>
+<%- include('../partials/footer.ejs')%>

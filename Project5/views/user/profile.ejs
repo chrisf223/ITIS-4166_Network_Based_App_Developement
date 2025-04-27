@@ -1,0 +1,88 @@
+<%- include('../partials/header') %>
+
+<div class="profile-container">
+  <h1>Your Listings</h1>
+
+  <% if (items.length === 0) { %>
+    <p>You do not have any listings.</p>
+  <% } else { %>
+    <table class="item-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% items.forEach(item => { %>
+          <tr>
+            <td><a href="/items/<%= item._id %>"><%= item.title %></a></td>
+            <td><%= item.active ? "Active" : "Inactive" %></td>
+            <td>
+              <!-- Edit Button -->
+              <form style="display: inline;">
+                <button type="submit" formmethod="GET" formaction="/items/<%= item._id %>/edit" class="btn edit-btn">
+                  <i class="fa-solid fa-pen-to-square"></i> Edit
+                </button>
+              </form>
+
+              <!-- Delete Button -->
+              <form style="display: inline;">
+                <button type="submit" formmethod="POST" formaction="/items/<%= item._id %>?_method=DELETE" class="btn delete-btn">
+                  <i class="fa-solid fa-trash"></i> Delete
+                </button>
+              </form>
+
+              <!-- View Offers Button -->
+              <form style="display: inline;">
+                <button 
+                  type="submit" 
+                  formmethod="GET" 
+                  formaction="/items/<%= item._id %>/offers" 
+                  class="btn offer-btn" 
+                  <%= item.totalOffers === 0 ? 'disabled' : '' %>>
+                  <i class="fa-solid fa-eye"></i> View Offers
+                </button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</div>
+
+<!-- Section: Offers Made by This User -->
+<div class="offer-list-section">
+  <h1>Your Offers</h1>
+
+  <% if (offersMade.length === 0) { %>
+    <p>You haven't made any offers yet.</p>
+  <% } else { %>
+    <table class="item-table"> <!-- Use item-table class here as well -->
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Your Offer</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% offersMade.forEach(offer => { %>
+          <tr>
+            <td><a href="/items/<%= offer.item._id %>"><%= offer.item.title %></a></td>
+            <td>$<%= offer.amount.toFixed(2) %></td>
+            <td><%= offer.status %></td>
+            <td><%= offer.createdAt.toDateString() %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } %>
+</div>
+
+</main>
+<%- include('../partials/footer') %>
+

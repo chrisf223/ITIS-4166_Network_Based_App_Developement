@@ -1,0 +1,39 @@
+<%- include('../partials/header.ejs')%> 
+<h1>Item Details</h1>
+
+<section class="item-detail-container">
+  <div class="item-image">
+    <img src="/images/<%= item.image %>" alt="<%= item.title %>">
+  </div>
+
+  <div class="item-info">
+    <h2><%= item.title %></h2>
+    <p><strong>Condition:</strong> <%= item.condition %></p>
+    <p><strong>Size:</strong> <%= item.size %></p>
+    <p><strong>Offers Received:</strong> <%= item.totalOffers || 0 %></p>
+
+    <% if (item.active) { %>
+      <% if (item.totalOffers > 0) { %>
+        <p><strong>Highest Offer:</strong> $<%= item.highestOffer.toFixed(2) %></p>
+      <% } %>
+    <% } %>
+
+    <p><strong>Seller:</strong> <%= item.seller.firstName + ' ' + item.seller.lastName %></p>
+    <p><strong>Price:</strong> $<%= item.price %></p>
+    <p><%= item.details %></p>
+
+    <% if (item.active) { %>
+      <form action="/items/<%= item._id %>/offers" method="POST" style="margin-top: 20px;">
+        <label for="amount"><strong>Make an Offer:</strong></label>
+        <input type="number" name="amount" id="amount" min="0.01" step="0.01" required>
+        <button type="submit" class="btn edit-btn">Submit Offer</button>
+      </form>
+      <% } else { %>
+        <p><strong>This item is no longer available.</strong></p>
+    <% } %>
+  </div>
+</section>
+</main>
+<%- include('../partials/footer.ejs')%>
+
+
